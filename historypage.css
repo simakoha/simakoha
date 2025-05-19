@@ -1,0 +1,254 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Trebuchet MS';
+}
+
+body {
+  background-color: #fff;
+  color: #333;
+  line-height: 1.6;
+}
+
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background: #fff;
+  border-bottom: 1px solid #ccc;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  position: relative;
+  text-align: left;
+  width: 300;
+  height: auto/2;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #000;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #83a9a5; /* light blue hover */
+}
+
+/* Donate Button */
+.donate-button {
+  background-color: #f5d2cd;
+  padding: 8px 15px;
+  border-radius: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.donate-button:hover {
+  background-color: #e1b7b0;
+  color: #000;
+}
+
+
+/* Donate Button */
+.donate-button {
+  background-color: #f5d2cd;
+  padding: 8px 15px;
+  border-radius: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.donate-button:hover {
+  background-color: #e1b7b0;
+  color: #000;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  text-align: left;
+}
+
+.hero-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.hero h1 {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 3em;
+  color: white;
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+	font: bold;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  text-align: left;
+}
+
+.hero-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.welcome {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 3em;
+  color: white;
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+}
+
+/* History Text Section */
+.history-text {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 20px;
+}
+
+.history-text h2 {
+  margin-top: 30px;
+  font-size: 2em;
+}
+
+.history-text p {
+  margin: 20px 0;
+}
+
+.image-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+.image-row img {
+  width: calc(50% - 10px);
+  height: auto;
+  border-radius: 10px;
+}
+
+.map-image {
+  width: 100%;
+  height: auto;
+  margin: 20px 0;
+  border-radius: 10px;
+}
+
+/* Swipe Gallery */
+ .carousel {
+  position: relative;
+  max-width: 720px;
+  margin: auto;
+  text-align: center;
+}
+
+.carousel-slide {
+  display: none;
+}
+
+.carousel-slide img {
+  width: 100%;
+  max-height: 500px;
+  object-fit: contain;
+}
+
+.caption {
+  margin-top: 10px;
+  font-size: 0.9em;
+  color: #555;
+}
+
+button.prev,
+button.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.7);
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 24px;
+  z-index: 10;
+}
+
+button.prev:hover,
+button.next:hover {
+  background-color: #f4d4c5;
+}
+
+button.prev {
+  left: 0;
+}
+
+button.next {
+  right: 0;
+}
+
+
+/* Footer */
+footer {
+  background-color: #a9c0b6;
+  padding: 30px;
+  text-align: center;
+  color: #333;
+}
+
+.footer-logo {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #000;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #83a9a5;
+}
+
+.credits {
+  font-size: 0.75em;
+  color: #555;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+

@@ -1,0 +1,188 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Trebuchet MS';
+}
+
+body {
+  background-color: #fff;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background: #fff;
+  border-bottom: 1px solid #ccc;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  position: relative;
+  text-align: left;
+  width: 300;
+  height: auto/2;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #000;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #83a9a5; /* light blue hover */
+}
+
+/* Donate Button */
+.donate-button {
+  background-color: #f5d2cd;
+  padding: 8px 15px;
+  border-radius: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.donate-button:hover {
+  background-color: #e1b7b0;
+  color: #000;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  text-align: left;
+}
+
+.hero-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.hero h1 {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 3em;
+  color: white;
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+	font: bold;
+}
+
+/* Mission Section */
+.mission {
+  background-color: #f4d4c5;
+  margin: 50px auto;
+  max-width: 700px;
+  padding: 30px;
+  border-radius: 50px;
+  text-align: center;
+  animation: fadeIn 2s forwards;
+  opacity: 0;
+}
+
+.mission h2 {
+  margin-bottom: 15px;
+  font-weight: normal;
+}
+
+/* About Section */
+.about {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 40px 20px;
+  background-color: #dceee9;
+}
+
+.about-img img {
+  width: 200px;
+  height: auto;
+  border-radius: 5px;
+}
+
+.about-text {
+  max-width: 500px;
+}
+
+.about-text h2 {
+  margin-bottom: 10px;
+  font-size: 1.8em;
+}
+
+.about-text p {
+  margin-bottom: 15px;
+}
+
+.learn-more {
+  display: inline-block;
+  background-color: #aac2b9;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.learn-more:hover {
+  background-color: #90a69e;
+}
+
+/* Footer */
+footer {
+  background-color: #a9c0b6;
+  padding: 30px;
+  text-align: center;
+  color: #333;
+}
+
+.footer-logo {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #000;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #83a9a5;
+}
+
+.credits {
+  font-size: 0.75em;
+  color: #555;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
