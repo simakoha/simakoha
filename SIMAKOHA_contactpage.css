@@ -147,10 +147,14 @@
   font-family: "Georgia", serif;
 }
 
-.contact-header h1 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
+.contact-header {
+  margin-top: 30px;        /* space below hero image */
+  padding-right: 40px;     /* indent paragraph from the right */
+  max-width: 600px;        /* optional, keeps it neat */
+  margin-left: auto;       /* push content to the right */
+  text-align: right;       /* align text to the right */
 }
+
 
 .contact-header p {
   margin-bottom: 30px;
