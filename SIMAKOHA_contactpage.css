@@ -71,14 +71,16 @@
 
 .welcome {
   position: absolute;
-  bottom: 20px;
-  left: 20px;
+  bottom: 20px; /* distance from bottom of image */
+  left: 20px;   /* distance from left of image */
   font-size: 3em;
   color: white;
   opacity: 0;
   animation: fadeIn 2s forwards;
   font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.7); /* optional for readability */
 }
+
 
 /* Mission Section */
 .mission {
