@@ -262,59 +262,7 @@ footer {
   color: #555;
 }
 
-/* Contact Section */
-#contact-section {
-  padding: 40px 20px;
-  max-width: 800px;
-  margin: auto;
-  font-family: "Georgia", serif;
-}
 
-.contact-header h1 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-}
-
-.contact-header p {
-  margin-bottom: 30px;
-  font-size: 1rem;
-  color: #333;
-}
-
-.contact-card {
-  display: flex;
-  align-items: center;
-  margin-bottom: 40px;
-  gap: 20px;
-}
-
-.contact-image {
-  width: 220px;
-  height: 300px;
-  overflow: hidden;
-  border-radius: 8px;
-  flex-shrink: 0;
-}
-
-.contact-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.contact-info p {
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-.contact-info a {
-  color: #d56a8d;
-  text-decoration: none;
-}
-
-.contact-info a:hover {
-  text-decoration: underline;
-}
 
 .email,
 .phone {
