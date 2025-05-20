@@ -148,13 +148,12 @@
 }
 
 .contact-header {
-  margin-top: 30px;        /* space below hero image */
-  padding-right: 40px;     /* indent paragraph from the right */
-  max-width: 600px;        /* optional, keeps it neat */
-  margin-left: auto;       /* push content to the right */
-  text-align: right;       /* align text to the right */
+  margin-top: 60px;        /* More space above, pushing paragraph down from hero */
+  padding-right: 80px;     /* Bigger indent from right edge */
+  max-width: 600px;
+  margin-left: auto;
+  text-align: right;
 }
-
 
 .contact-header p {
   margin-bottom: 30px;
