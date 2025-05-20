@@ -68,15 +68,19 @@
 
 .welcome {
   position: absolute;
-  bottom: 20px; /* distance from bottom of image */
-  left: 20px;   /* distance from left of image */
+  bottom: 20px;
+  left: 0;          /* change this to 0 */
   font-size: 3em;
   color: white;
   opacity: 0;
   animation: fadeIn 2s forwards;
   font-weight: bold;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+  padding-left: 20px;  /* add some padding if you want spacing inside */
+  width: 100%;         /* so it spans full width */
+  box-sizing: border-box; /* include padding */
 }
+
 
 /* Contact Section */
 #contact {
