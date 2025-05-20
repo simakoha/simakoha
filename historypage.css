@@ -121,10 +121,13 @@ body {
 }
 
 .image-row img {
-  width: calc(50% - 10px);
-  height: auto;
+  width: 100%;
+  max-width: calc(50% - 10px);
+  max-height: 300px;
+  object-fit: cover;
   border-radius: 10px;
 }
+
 
 .map-image {
   width: 100%;
