@@ -1,9 +1,11 @@
-/* Reset and Base Styles */
+/* ===========================
+   Reset and Base Styles
+=========================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Trebuchet MS';
+  font-family: 'Trebuchet MS', sans-serif;
 }
 
 body {
@@ -13,7 +15,9 @@ body {
 }
 
 
-/* navbar */
+/* ===========================
+   Navbar
+=========================== */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -26,11 +30,9 @@ body {
   z-index: 1000;
 }
 
-.logo {
-  position: relative;
-  text-align: left;
-  width: 300;
-  height: auto/2;
+.logo img {
+  height: auto;
+  width: 164px;
 }
 
 .nav-links {
@@ -46,22 +48,8 @@ body {
 }
 
 .nav-links a:hover {
-  color: #83a9a5; /* light blue hover */
+  color: #83a9a5;
 }
-
-/* donate button */
-.donate-button {
-  background-color: #f5d2cd;
-  padding: 8px 15px;
-  border-radius: 15px;
-  transition: background-color 0.3s ease;
-}
-
-.donate-button:hover {
-  background-color: #e1b7b0;
-  color: #000;
-}
-
 
 /* Donate Button */
 .donate-button {
@@ -76,30 +64,10 @@ body {
   color: #000;
 }
 
-/* hero Section */
-.hero {
-  position: relative;
-  text-align: left;
-}
 
-.hero-img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.hero h1 {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  font-size: 3em;
-  color: white;
-  opacity: 0;
-  animation: fadeIn 2s forwards;
-	font: bold;
-}
-
-/* hero Section */
+/* ===========================
+   Hero Section
+=========================== */
 .hero {
   position: relative;
   text-align: left;
@@ -119,9 +87,13 @@ body {
   color: white;
   opacity: 0;
   animation: fadeIn 2s forwards;
+  font-weight: bold;
 }
 
-/* history section */
+
+/* ===========================
+   History Section
+=========================== */
 .history-text {
   max-width: 900px;
   margin: 50px auto;
@@ -137,6 +109,10 @@ body {
   margin: 20px 0;
 }
 
+
+/* ===========================
+   Image Rows
+=========================== */
 .image-row {
   display: flex;
   gap: 20px;
@@ -157,8 +133,26 @@ body {
   border-radius: 10px;
 }
 
-/* Swipe Gallery */
- .carousel {
+
+/* ===========================
+   Piano Image Section
+=========================== */
+.piano {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.piano img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+
+/* ===========================
+   Swipe Gallery
+=========================== */
+.carousel {
   position: relative;
   max-width: 720px;
   margin: auto;
@@ -192,6 +186,7 @@ button.next {
   cursor: pointer;
   font-size: 24px;
   z-index: 10;
+  border-radius: 50%;
 }
 
 button.prev:hover,
@@ -208,7 +203,9 @@ button.next {
 }
 
 
-/* footer */
+/* ===========================
+   Footer
+=========================== */
 footer {
   background-color: #a9c0b6;
   padding: 30px;
@@ -244,11 +241,15 @@ footer {
   color: #555;
 }
 
-/* ani */
+
+/* ===========================
+   Animations
+=========================== */
 @keyframes fadeIn {
   to {
     opacity: 1;
   }
 }
+
 
 
