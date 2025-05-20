@@ -1,12 +1,11 @@
-
-	* {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Trebuchet MS';
+  font-family: 'Trebuchet MS', sans-serif;
 }
-	
-	/* Navbar */
+
+/* Navbar */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -22,8 +21,8 @@
 .logo {
   position: relative;
   text-align: left;
-  width: 300;
-  height: auto/2;
+  width: 300px;
+  height: auto;
 }
 
 .nav-links {
@@ -55,9 +54,7 @@
   color: #000;
 }
 
-/* ===========================
-   Hero Section
-=========================== */
+/* Hero Section */
 .hero {
   position: relative;
   text-align: left;
@@ -78,81 +75,22 @@
   opacity: 0;
   animation: fadeIn 2s forwards;
   font-weight: bold;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.7); /* optional for readability */
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
 }
 
-
-/* Mission Section */
-.mission {
-  background-color: #f4d4c5;
-  margin: 50px auto;
+/* Contact Section */
+#contact {
   max-width: 700px;
-  padding: 30px;
-  border-radius: 50px;
-  text-align: center;
-  animation: fadeIn 2s forwards;
-  opacity: 0;
-}
-
-.mission h2 {
-  margin-bottom: 15px;
-  font-weight: normal;
-}
-
-/* About Section */
-.about {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+  margin: 0 auto;
   padding: 40px 20px;
-  background-color: #dceee9;
-}
-
-.about-img img {
-  width: 200px;
-  height: auto;
-  border-radius: 5px;
-}
-
-.about-text {
-  max-width: 500px;
-}
-
-.about-text h2 {
-  margin-bottom: 10px;
-  font-size: 1.8em;
-}
-
-.about-text p {
-  margin-bottom: 15px;
-}
-
-.learn-more {
-  display: inline-block;
-  background-color: #aac2b9;
-  color: white;
-  padding: 8px 12px;
-  border-radius: 5px;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
-}
-
-.learn-more:hover {
-  background-color: #90a69e;
-}
-	#contact-section {
-  padding: 40px 20px;
-  max-width: 800px;
-  margin: auto;
-  font-family: "Georgia", serif;
+  font-family: Georgia, serif;
 }
 
 .contact-header {
-  margin-top: 60px;        /* More space above, pushing paragraph down from hero */
-  padding-right: 80px;     /* Bigger indent from right edge */
+  margin-top: 30px;
+  padding-right: 40px; /* optional */
   max-width: 600px;
-  margin-left: auto;
-  text-align: right;
+  /* Removed right-align and margin-left:auto for consistent indentation */
 }
 
 .contact-header p {
@@ -162,6 +100,7 @@
   margin-top: 50px;
 }
 
+/* Contact Cards */
 .contact-card {
   display: flex;
   align-items: center;
@@ -201,7 +140,9 @@
   font-weight: bold;
   color: #444;
 }
-	.donate-section {
+
+/* Donate Section */
+.donate-section {
   max-width: 700px;
   margin: 0 auto;
   padding: 40px 20px;
@@ -232,6 +173,7 @@
   line-height: 1.6;
   margin: 10px 0;
 }
+
 /* Footer */
 footer {
   background-color: #a9c0b6;
@@ -268,7 +210,6 @@ footer {
   color: #555;
 }
 
-
 /* Fade-in animation */
 .fade-in {
   opacity: 0;
@@ -281,32 +222,12 @@ footer {
   }
 }
 
-/* Optional: indent matching style */
+/* Indentation */
 .indent {
   margin-left: 100px;
   margin-right: 100px;
 }
 
-
-.email,
-.phone {
-  font-weight: bold;
-  color: #444;
-}
-
-#contact {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 40px 20px;
-  font-family: Georgia, serif;
-}
-
-#contact {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 40px 20px;
-  font-family: Georgia, serif;
-}
 
 
 
