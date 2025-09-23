@@ -20,6 +20,12 @@ body {
   padding: 0px;
 }
 
+.history-button{
+  max-width: 900px;
+  margin-left: 50px auto;
+  padding: 0px;
+}
+
 /* ===========================
    Navbar
 =========================== */
