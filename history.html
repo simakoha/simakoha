@@ -37,10 +37,12 @@ i<!DOCTYPE html>
     <img src="images/heading_2.jpg" alt="Historic photo" class="hero-img"/>
     <h1 class="welcome fade-in">Our History</h1>
   </section>
-   
-  <button onclick="document.getElementById('background-music').play()">
+
+  <section class="history-text">
+  <button onclick="toggleMusic()">
     <i class="fa-solid fa-play"></i>
-</button>
+  </button>
+  </section>
  
 
   <!-- History Content -->
@@ -216,6 +218,15 @@ i<!DOCTYPE html>
       }
       slides[slideIndex - 1].style.display = "block";
     }
+
+    function toggleMusic() {
+  const music = document.getElementById('background-music');
+  if (music.paused) {
+    music.play();
+  } else {
+    music.pause();
+  }
+}
   </script>
 
     <audio id="background-music" src='chopin-nocturne-20-in-c-sharp-minor-162788.mp3'>
