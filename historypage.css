@@ -14,17 +14,7 @@ body {
   line-height: 1.6;
 }
 
-.history-button {
-  max-width: 900px;
-  margin-left: 50px auto;
-  padding: 0px;
-}
 
-.history-button{
-  max-width: 900px;
-  margin-left: 50px auto;
-  padding: 0px;
-}
 
 /* ===========================
    Navbar
@@ -118,6 +108,12 @@ body {
 
 .history-text p {
   margin: 20px 0;
+}
+
+.history-button{
+  max-width: 900px;
+  margin-left: 50px ;
+  padding: 0px;
 }
 
 
