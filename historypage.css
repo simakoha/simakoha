@@ -115,7 +115,10 @@ body {
 
 .history-button{
   max-width: 900px;
-  margin-left: 50px ;
+  margin-top: 5px; /* Adjust this value as needed */
+  margin-bottom: 10px; /* Keep original bottom margin or adjust */
+  margin-left: auto;
+  margin-right: auto;
   padding: 0px;
 }
 
