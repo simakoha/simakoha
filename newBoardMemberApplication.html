@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Board Member Application</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center; /* Center the entire content block */
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto; /* Center the form container */
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: left; /* Reset text alignment for form elements */
+        }
+        .logo {
+            width: 150px;
+            height: 80px;
+            background-color: #f0f0f0;
+            border: 1px dashed #333;
+            margin: 0 auto 20px; /* Center the logo placeholder */
+            line-height: 80px;
+            text-align: center;
+            font-weight: bold;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        textarea {
+            resize: vertical;
+            height: 150px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="logo">
+            <img src="images/simahoka_logo.png" width="164" height="73" alt="Simakoha Logo" />
+        </div>
+
+        <h1>Board Member Application Page</h1>
+        
+        <form action="mailto:board@simakoha.com?subject=New Board Member Application" method="post" enctype="text/plain">
+            
+            <h2>Contact Information</h2>
+            
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="First_Name" required>
+
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="Last_Name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="Email" required>
+
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="Phone" required>
+
+            <h2>Additional Information</h2>
+            
+            <label for="additionalInfo">Tell us why you are interested in joining the board:</label>
+            <textarea id="additionalInfo" name="Additional_Information"></textarea>
+
+            <button type="submit">Submit Application</button>
+
+        </form>
+    </div>
