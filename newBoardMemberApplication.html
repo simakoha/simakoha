@@ -1,105 +1,91 @@
-<!DOCTYPE html>
-<html lang="en">
-
-    <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Board Member Application</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            text-align: center; /* Center the entire content block */
-        }
-        .container {
-            max-width: 600px;
-            margin: 0 auto; /* Center the form container */
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            text-align: left; /* Reset text alignment for form elements */
-        }
-        .logo {
-            width: 150px;
-            height: 80px;
-            background-color: #f0f0f0;
-            border: 1px dashed #333;
-            margin: 0 auto 20px; /* Center the logo placeholder */
-            line-height: 80px;
-            text-align: center;
-            font-weight: bold;
-        }
-        h1 {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        label {
-            display: block;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-        input[type="text"],
-        input[type="email"],
-        input[type="tel"],
-        textarea {
-            width: 100%;
-            padding: 8px;
-            margin-top: 5px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        textarea {
-            resize: vertical;
-            height: 150px;
-        }
-        button {
-            background-color: #007bff;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-    </style>
-</head>
-<body>
-
-    <div class="container">
-        <div class="logo">
-            <img src="images/simahoka_logo.png" width="164" height="73" alt="Simakoha Logo" />
-        </div>
-
-        <h1>Board Member Application Page</h1>
-        
-       <!-- <form action="mailto:Lilla_Sundborn@yahoo.com?subject=New Board Member Application" method="post" enctype="text/plain">
-            -->
-        <form action="mailto:dconner@gregoryschool.org?subject=New Board Member Application" method="post" enctype="text/plain">
-            <h2>Contact InformationX</h2>
-            
-            <label for="firstName">First Name</label>
-            <input type="text" id="firstName" name="First_Name" required>
-
-            <label for="lastName">Last Name</label>
-            <input type="text" id="lastName" name="Last_Name" required>
-
-            <label for="email">Email</label>
-            <input type="email" id="email" name="Email" required>
-
-            <label for="phone">Phone</label>
-            <input type="tel" id="phone" name="Phone" required>
-
-            <h2>Additional Information</h2>
-            
-            <label for="additionalInfo">Tell us why you are interested in joining the board:</label>
-            <textarea id="additionalInfo" name="Additional_Information"></textarea>
-
-            <button type="submit">Submit Application</button>
-
-        </form>
+<div class="become-board-member" id="board-application-container">
+    
+    <div class="logo-placeholder">
+        [Your Logo Here]
     </div>
+
+    <h1>Board Member Application Page</h1>
+    
+    <div class="submission-instructions" style="border: 1px solid #007bff; padding: 15px; border-radius: 5px; margin-bottom: 25px;">
+        <p style="font-weight: bold; margin-top: 0;">Please choose your preferred submission method:</p>
+        <ol style="padding-left: 20px;">
+            <li><strong style="color: #007bff;">Option 1: Quick Web Submission</strong> (Data is sent directly to us.)</li>
+            <li><strong style="color: #28a745;">Option 2: Download PDF</strong> (Generates a file you can attach to your own email.)</li>
+        </ol>
+    </div>
+
+    <form id="boardApplicationForm" action="https://formsubmit.co/your_email@example.com" method="POST">
+        
+        <h2>Contact Information</h2>
+        
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" name="First_Name" required>
+
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" name="Last_Name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="Email" required>
+
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" name="Phone" required>
+
+        <h2>Additional Information</h2>
+        
+        <label for="additionalInfo">Tell us why you are interested in joining the board:</label>
+        <textarea id="additionalInfo" name="Additional_Information"></textarea>
+
+        <div style="display: flex; gap: 15px; margin-top: 30px; flex-wrap: wrap;">
+            
+            <button type="submit" class="button-primary" style="flex-grow: 1; background-color: #007bff;">
+                1. Submit Application Online (Recommended)
+            </button>
+
+            <button type="button" onclick="generateAndEmailPDF()" class="button-secondary" style="flex-grow: 1; background-color: #28a745;">
+                2. Download & Email PDF
+            </button>
+        </div>
+    </form>
+
+    <div id="pdfEmailInstructions" style="display:none; margin-top: 20px; padding: 15px; background-color: #f8f9fa; border: 1px dashed #28a745;">
+        <p style="font-weight: bold;">Step 2: Emailing the PDF</p>
+        <p>1. Open your downloaded **Board_Application.pdf** file.</p>
+        <p>2. Open your email client (Gmail, Outlook, etc.).</p>
+        <p>3. Create a new email addressed to: <strong style="color: #dc3545;">your_email@example.com</strong></p>
+        <p>4. Subject line: **Board Member Application - [Applicant Name]**</p>
+        <p>5. **Attach the PDF file** you just downloaded and send.</p>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+    // ** IMPORTANT: REPLACE 'your_email@example.com' with the email address where you want to receive the application.
+    const RECEIVING_EMAIL = 'your_email@example.com'; 
+
+    function generateAndEmailPDF() {
+        // Find the main container div that holds the content we want to PDF
+        const element = document.getElementById('board-application-container');
+        
+        // --- 1. Set PDF Options ---
+        var opt = {
+            margin: 0.5,
+            filename: 'Board_Application.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2 },
+            jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+        };
+
+        // --- 2. Generate and Download PDF ---
+        html2pdf().set(opt).from(element).save();
+
+        // --- 3. Show Follow-up Instructions ---
+        // Display the hidden instructions on how to email the downloaded PDF
+        document.getElementById('pdfEmailInstructions').style.display = 'block';
+
+        // Update the recipient email address in the instructions
+        document.getElementById('pdfEmailInstructions').querySelector('strong').textContent = RECEIVING_EMAIL;
+
+        // Optionally, hide the form submission buttons to reduce confusion after PDF is generated
+        // document.getElementById('boardApplicationForm').style.display = 'none';
+    }
+</script>
