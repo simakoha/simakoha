@@ -183,7 +183,7 @@
                 </button>
             </div>
 
-
+            <div id="hiddenApplication"></div>
             <div id="pdfEmailInstructions" style="display:none;">
                 <p style="font-weight: bold; font-size: 1.1em;">✅ Success! Now follow these steps to submit your application:</p>
                 <p>1. Open your downloaded **Board_Application.pdf** file.</p>
@@ -244,8 +244,13 @@
 
             // 3. Generate and Download PDF
             // The .then() ensures the cleanup happens AFTER the PDF generation is complete
-           
-            html2pdf().set(opt).from(element).save().then(() => {
+            const saveElement =  document.getElementById("hiddenApplication");
+            saveElement += document.getElementById("firstName").value+"<br>";
+            saveElement += document.getElementById("lastName").value+"<br>";
+            saveElement += document.getElementById("email").value;
+            saveElement += document.getElementById("phone").value;
+            saveElement += document.getElementById("additionalInfo").value;
+            html2pdf().set(opt).from(saveElement).save().then(() => {
                  // =========================================================
                  // === CLEANUP STEP: Restore form for user interaction ===
                  // =========================================================
