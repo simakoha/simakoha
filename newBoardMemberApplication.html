@@ -217,16 +217,17 @@
                 { inputId: 'phone', outputId: 'pdf-phone' },
                 { inputId: 'additionalInfo', outputId: 'pdf-additionalInfo' }
             ];
-            const outputElement;
+           
             fields.forEach(field => {
                 const inputElement = document.getElementById(field.inputId);
-                outputElement = document.getElementById(field.outputId);
+                const outputElement = document.getElementById(field.outputId);
 
                 // Hide the input box and show the plain text output div
                 inputElement.classList.add('hide-for-pdf');
                 
                 // Write the value to the plain text div, using 'N/A' if empty
                 outputElement.textContent = inputElement.value || 'N/A';
+                outputElement.style.display="block";
                 
                 // Show the plain text div for the PDF generator
                 outputElement.classList.add('show-for-pdf');
@@ -244,7 +245,7 @@
             // 3. Generate and Download PDF
             // The .then() ensures the cleanup happens AFTER the PDF generation is complete
            
-            html2pdf().set(opt).from(outputElement).save().then(() => {
+            html2pdf().set(opt).from(element).save().then(() => {
                  // =========================================================
                  // === CLEANUP STEP: Restore form for user interaction ===
                  // =========================================================
