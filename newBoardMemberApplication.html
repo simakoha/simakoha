@@ -243,7 +243,7 @@
 
             // 3. Generate and Download PDF
             // The .then() ensures the cleanup happens AFTER the PDF generation is complete
-            <!--
+           
             html2pdf().set(opt).from(outputElement).save().then(() => {
                  // =========================================================
                  // === CLEANUP STEP: Restore form for user interaction ===
@@ -258,7 +258,7 @@
                      outputElement.textContent = ''; // Clear the content
                  });
 
-                --!>
+                
 
                  // 4. Show Follow-up Instructions on the web page
                  const instructionsDiv = document.getElementById('pdfEmailInstructions');
