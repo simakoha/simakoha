@@ -24,14 +24,17 @@
 
         /* Logo Placeholder Styling */
         .logo-placeholder {
-            width: 150px;
-            height: 80px;
-            background-color: #f0f0f0;
-            border: 1px dashed #333;
+            width: 164px; /* Matches your image width */
+            height: 73px; /* Matches your image height */
+            /* Removed background/border so the logo image can show clearly */
             margin: 0 auto 20px;
-            line-height: 80px;
+            line-height: 73px;
             text-align: center;
             font-weight: bold;
+        }
+        .logo-placeholder img {
+            max-width: 100%;
+            height: auto;
         }
 
         /* Heading Styling */
@@ -43,13 +46,13 @@
         /* --- Form Layout and Spacing --- */
         
         .form-row {
-            margin-bottom: 20px; /* Space between input fields */
+            margin-bottom: 20px;
         }
 
         .become-board-member label {
             display: block;
             font-weight: bold;
-            margin-bottom: 5px; /* Small gap between label and input */
+            margin-bottom: 5px;
         }
 
         /* Styling for Input Boxes */
@@ -66,16 +69,15 @@
             font-size: 16px;
         }
 
-        /* --- PDF Generation Specific CSS --- */
+        /* --- PDF Generation Specific CSS (Fix for missing content) --- */
 
         /* The output fields for the PDF should be visually distinct and hidden initially */
         .pdf-output-field {
             display: none; 
-            /* In the live view, this is under the input */
             border-bottom: 1px dashed #666; 
             padding: 5px 0;
             min-height: 20px;
-            font-weight: normal; /* Less bold than the label */
+            font-weight: normal; 
         }
         
         .pdf-output-field-textarea {
@@ -83,7 +85,7 @@
             border: 1px dashed #666;
             padding: 8px;
             min-height: 100px;
-            white-space: pre-wrap; /* Preserves line breaks for the PDF */
+            white-space: pre-wrap;
             font-weight: normal;
         }
 
@@ -98,7 +100,7 @@
         /* --- Button and Instructions Styling --- */
 
         .pdf-button {
-            background-color: #0056b3; /* Darker Blue */
+            background-color: #0056b3;
             color: white;
             padding: 12px 30px;
             border: none;
@@ -130,7 +132,7 @@
             <div id="pdf-content-area">
 
                 <div class="logo-placeholder">
-                    
+                    <img src="images/simahoka_logo.png" alt="Simakoha Logo" />
                 </div>
 
                 <h1>Board Member Application Page</h1>
@@ -237,6 +239,7 @@
             };
 
             // 3. Generate and Download PDF
+            // The .then() ensures the cleanup happens AFTER the PDF generation is complete
             html2pdf().set(opt).from(element).save().then(() => {
                  // --- CLEANUP STEP: Restore form for user interaction ---
                  fields.forEach(field => {
