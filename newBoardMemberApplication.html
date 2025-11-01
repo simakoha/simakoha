@@ -244,7 +244,7 @@
 
             // 3. Generate and Download PDF
             // The .then() ensures the cleanup happens AFTER the PDF generation is complete
-            const saveElement =  document.getElementById("hiddenApplication");
+            let saveElement =  document.getElementById("hiddenApplication");
             saveElement += document.getElementById("firstName").value+"<br>";
             saveElement += document.getElementById("lastName").value+"<br>";
             saveElement += document.getElementById("email").value;
