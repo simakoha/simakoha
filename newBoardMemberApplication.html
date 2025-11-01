@@ -1,71 +1,214 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-<script>
-    // ** IMPORTANT: This is the email where you will receive the application.
-    const RECEIVING_EMAIL = 'Lilla_Sundborn@yahoo.com'; 
-
-    function generateAndEmailPDF() {
-        // 1. Target the correct element for PDF generation (The whole visual area)
-        const element = document.getElementById('pdf-content-area');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <link rel="stylesheet" href="stylesheet2.css"/>
+    <link rel="stylesheet" href="SIMAKOHA_contactpage.css" /> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <title>Simakoha - Contact (Board Application)</title>
+    
+    <style>
+        /* --- General Layout and Container Styling --- */
         
-        // --- CRITICAL STEP: Write Form Values to Hidden Divs ---
-        const fields = [
-            { inputId: 'firstName', outputId: 'pdf-firstName' },
-            { inputId: 'lastName', outputId: 'pdf-lastName' },
-            { inputId: 'email', outputId: 'pdf-email' },
-            { inputId: 'phone', outputId: 'pdf-phone' },
-            { inputId: 'additionalInfo', outputId: 'pdf-additionalInfo' }
-        ];
+        .become-board-member {
+            max-width: 650px; /* Slightly wider for better print layout */
+            margin: 40px auto;
+            padding: 25px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        /* Logo Placeholder Styling */
+        .logo-placeholder {
+            width: 164px;
+            height: 73px;
+            margin: 0 auto 20px;
+            text-align: center;
+        }
+        .logo-placeholder img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Heading Styling */
+        .become-board-member h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
         
-        fields.forEach(field => {
-            const inputElement = document.getElementById(field.inputId);
-            const outputElement = document.getElementById(field.outputId);
+        /* --- Form Layout and Spacing --- */
+        
+        .form-row {
+            margin-bottom: 20px;
+        }
 
-            // 1. Hide the user input box (input/textarea)
-            inputElement.classList.add('hide-for-pdf');
-            
-            // 2. Write the value to the plain text div
-            outputElement.textContent = inputElement.value || 'N/A';
-            
-            // 3. Show the plain text div for the PDF generator to see
-            outputElement.classList.add('show-for-pdf');
-        });
+        .become-board-member label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
 
-        // 2. Set PDF Configuration
-        var opt = {
-            // REDUCED MARGINS: Set all four margins to 0.25 inches
-            margin: [0.25, 0.25, 0.25, 0.25], 
-            filename: 'Board_Application.pdf',
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { scale: 2 },
-            jsPDF: { 
-                unit: 'in', 
-                format: 'letter', 
-                orientation: 'portrait',
-                // ADDED PAGE BREAK LOGIC: Tells jsPDF to automatically handle content overflow
-                pagebreak: { mode: ['css', 'legacy'] }
+        /* Styling for Input Boxes (Ensuring inputs look good and are captured by print) */
+        .become-board-member input[type="text"],
+        .become-board-member input[type="email"],
+        .become-board-member input[type="tel"],
+        .become-board-member textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        /* --- CRITICAL FIX: Print Specific CSS --- */
+        
+        @media print {
+            /* Hides the button and instructions from the final PDF/Print view */
+            .no-print {
+                display: none !important;
             }
-        };
+            /* Removes the container box and shadow for a clean application document */
+            .become-board-member {
+                border: none !important;
+                box-shadow: none !important;
+                padding: 0 !important;
+                /* Ensures content starts right at the top of the page */
+                margin-top: 0 !important; 
+            }
+            /* Remove the instruction box border from the PDF */
+            .submission-instructions {
+                border: none !important;
+                padding: 0 !important;
+                /* Removes the margin/spacing that could cause the "halfway start" issue */
+                margin-top: 0 !important; 
+                margin-bottom: 10px !important;
+            }
+            /* Set minimal margins for the page itself */
+            @page {
+                margin: 0.5in;
+            }
+        }
+        
+        /* --- Button and Instructions Styling --- */
 
-        // 3. Generate and Download PDF
-        html2pdf().set(opt).from(element).save().then(() => {
-             // --- CLEANUP STEP: Restore form for user interaction ---
-             fields.forEach(field => {
-                 // Restore visibility of the input box
-                 document.getElementById(field.inputId).classList.remove('hide-for-pdf');
-                 
-                 // Hide the output text field again
-                 const outputElement = document.getElementById(field.outputId);
-                 outputElement.classList.remove('show-for-pdf');
-                 outputElement.textContent = ''; 
-             });
+        .pdf-button {
+            background-color: #0056b3;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+        
+        .pdf-button:hover {
+            background-color: #003d80;
+        }
 
-             // 4. Show Follow-up Instructions on the web page
-             const instructionsDiv = document.getElementById('pdfEmailInstructions');
-             instructionsDiv.style.display = 'block';
-             
-             document.getElementById('recipient-email').textContent = RECEIVING_EMAIL;
-             
-             instructionsDiv.scrollIntoView({ behavior: 'smooth' });
-        });
-    }
-</script>
+        #pdfEmailInstructions {
+            margin-top: 25px; 
+            padding: 20px; 
+            background-color: #e9ecef; 
+            border: 1px solid #ced4da; 
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <section id="board-member-application">
+        
+        <div class="become-board-member" id="board-application-container">
+            
+            <div class="logo-placeholder">
+                <img src="images/simahoka_logo.png" alt="Simakoha Logo" />
+            </div>
+
+            <h1>Board Member Application Page</h1>
+            
+            <div class="submission-instructions" style="border: 1px solid #28a745; padding: 15px; border-radius: 5px; margin-bottom: 25px;">
+                <p style="font-weight: bold; margin-top: 0; color: #28a745;">Application Method: Download and Email</p>
+                <p>Please fill out the form below and click the **"Print to PDF"** button. Your browser will then generate a complete PDF file you can save.</p>
+            </div>
+
+            <form id="boardApplicationForm">
+                
+                <h2>Contact Information</h2>
+                
+                <div class="form-row">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" name="First_Name" required>
+                </div>
+
+                <div class="form-row">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" name="Last_Name" required>
+                </div>
+
+                <div class="form-row">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="Email" required>
+                </div>
+
+                <div class="form-row">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" name="Phone" required>
+                </div>
+
+                <h2>Additional Information</h2>
+                
+                <div class="form-row">
+                    <label for="additionalInfo">Tell us why you are interested in joining the board:</label>
+                    <textarea id="additionalInfo" name="Additional_Information" style="height: 200px;"></textarea>
+                </div>
+
+            </form>
+
+            <div class="no-print" style="margin-top: 30px; text-align: center;">
+                <button type="button" onclick="generatePDFByPrinting()" class="pdf-button">
+                    Print to PDF & View Instructions
+                </button>
+            </div>
+
+
+            <div id="pdfEmailInstructions" class="no-print" style="display:none;">
+                <p style="font-weight: bold; font-size: 1.1em;">✅ Success! Now follow these steps to submit your application:</p>
+                <p>1. In the print dialog, select **"Save as PDF"** or **"Microsoft Print to PDF"** and save the file.</p>
+                <p>2. Create a new email addressed to: <strong id="recipient-email" style="color: #dc3545;">your_email@example.com</strong></p>
+                <p>3. Use the subject line: **Board Member Application - [Your Full Name]**</p>
+                <p>4. **Attach the PDF file** you just saved and send.</p>
+                <p style="font-style: italic;">Thank you for your interest!</p>
+            </div>
+        </div>
+        
+    </section>
+    
+    <script>
+        // ** IMPORTANT: REPLACE 'your_email@example.com' with the email address where you want to receive the application.
+        const RECEIVING_EMAIL = 'Lilla_Sundborn@yahoo.com'; 
+
+        function generatePDFByPrinting() {
+            // 1. Show the email instructions block
+            const instructionsDiv = document.getElementById('pdfEmailInstructions');
+            instructionsDiv.style.display = 'block';
+            
+            // 2. Set the recipient email dynamically
+            document.getElementById('recipient-email').textContent = RECEIVING_EMAIL;
+            
+            // 3. Scroll to the instructions for visibility
+            instructionsDiv.scrollIntoView({ behavior: 'smooth' });
+
+            // 4. Trigger the browser's print dialogue
+            // The @media print CSS rules ensure a clean output.
+            window.print();
+        }
+    </script>
+</body>
+</html>
