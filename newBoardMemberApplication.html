@@ -197,70 +197,76 @@
         
     </section>
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-    <script>
-        // ** IMPORTANT: This is the email where you will receive the application.
-        const RECEIVING_EMAIL = 'Lilla_Sundborn@yahoo.com'; 
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+    // ** IMPORTANT: This is the email where you will receive the application.
+    const RECEIVING_EMAIL = 'Lilla_Sundborn@yahoo.com'; 
 
-        function generateAndEmailPDF() {
-            // 1. Target the correct element for PDF generation (The whole visual area)
-            const element = document.getElementById('pdf-content-area');
+    function generateAndEmailPDF() {
+        // 1. Target the correct element for PDF generation (The whole visual area)
+        const element = document.getElementById('pdf-content-area');
+        
+        // --- CRITICAL STEP: Write Form Values to Hidden Divs ---
+        const fields = [
+            { inputId: 'firstName', outputId: 'pdf-firstName' },
+            { inputId: 'lastName', outputId: 'pdf-lastName' },
+            { inputId: 'email', outputId: 'pdf-email' },
+            { inputId: 'phone', outputId: 'pdf-phone' },
+            { inputId: 'additionalInfo', outputId: 'pdf-additionalInfo' }
+        ];
+        
+        fields.forEach(field => {
+            const inputElement = document.getElementById(field.inputId);
+            const outputElement = document.getElementById(field.outputId);
+
+            // 1. Hide the user input box (input/textarea)
+            inputElement.classList.add('hide-for-pdf');
             
-            // --- CRITICAL STEP: Write Form Values to Hidden Divs ---
-            const fields = [
-                { inputId: 'firstName', outputId: 'pdf-firstName' },
-                { inputId: 'lastName', outputId: 'pdf-lastName' },
-                { inputId: 'email', outputId: 'pdf-email' },
-                { inputId: 'phone', outputId: 'pdf-phone' },
-                { inputId: 'additionalInfo', outputId: 'pdf-additionalInfo' }
-            ];
+            // 2. Write the value to the plain text div
+            outputElement.textContent = inputElement.value || 'N/A';
             
-            fields.forEach(field => {
-                const inputElement = document.getElementById(field.inputId);
-                const outputElement = document.getElementById(field.outputId);
+            // 3. Show the plain text div for the PDF generator to see
+            outputElement.classList.add('show-for-pdf');
+        });
 
-                // 1. Hide the user input box (input/textarea)
-                inputElement.classList.add('hide-for-pdf');
-                
-                // 2. Write the value to the plain text div
-                outputElement.textContent = inputElement.value || 'N/A';
-                
-                // 3. Show the plain text div for the PDF generator to see
-                outputElement.classList.add('show-for-pdf');
-            });
+        // 2. Set PDF Configuration
+        var opt = {
+            // REDUCED MARGINS: Set all four margins to 0.25 inches
+            margin: [0.25, 0.25, 0.25, 0.25], 
+            filename: 'Board_Application.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2 },
+            jsPDF: { 
+                unit: 'in', 
+                format: 'letter', 
+                orientation: 'portrait',
+                // ADDED PAGE BREAK LOGIC: Tells jsPDF to automatically handle content overflow
+                pagebreak: { mode: ['css', 'legacy'] }
+            }
+        };
 
-            // 2. Set PDF Configuration
-            var opt = {
-                margin: 0.5,
-                filename: 'Board_Application.pdf',
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2 },
-                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
-            };
-
-            // 3. Generate and Download PDF
-            // The .then() ensures the cleanup happens AFTER the PDF generation is complete
-            html2pdf().set(opt).from(element).save().then(() => {
-                 // --- CLEANUP STEP: Restore form for user interaction ---
-                 fields.forEach(field => {
-                     // Restore visibility of the input box
-                     document.getElementById(field.inputId).classList.remove('hide-for-pdf');
-                     
-                     // Hide the output text field again
-                     const outputElement = document.getElementById(field.outputId);
-                     outputElement.classList.remove('show-for-pdf');
-                     outputElement.textContent = ''; 
-                 });
-
-                 // 4. Show Follow-up Instructions on the web page
-                 const instructionsDiv = document.getElementById('pdfEmailInstructions');
-                 instructionsDiv.style.display = 'block';
+        // 3. Generate and Download PDF
+        html2pdf().set(opt).from(element).save().then(() => {
+             // --- CLEANUP STEP: Restore form for user interaction ---
+             fields.forEach(field => {
+                 // Restore visibility of the input box
+                 document.getElementById(field.inputId).classList.remove('hide-for-pdf');
                  
-                 document.getElementById('recipient-email').textContent = RECEIVING_EMAIL;
-                 
-                 instructionsDiv.scrollIntoView({ behavior: 'smooth' });
-            });
-        }
-    </script>
+                 // Hide the output text field again
+                 const outputElement = document.getElementById(field.outputId);
+                 outputElement.classList.remove('show-for-pdf');
+                 outputElement.textContent = ''; 
+             });
+
+             // 4. Show Follow-up Instructions on the web page
+             const instructionsDiv = document.getElementById('pdfEmailInstructions');
+             instructionsDiv.style.display = 'block';
+             
+             document.getElementById('recipient-email').textContent = RECEIVING_EMAIL;
+             
+             instructionsDiv.scrollIntoView({ behavior: 'smooth' });
+        });
+    }
+</script>
 </body>
 </html>
