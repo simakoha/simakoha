@@ -245,11 +245,11 @@
             // 3. Generate and Download PDF
             // The .then() ensures the cleanup happens AFTER the PDF generation is complete
             let saveElement =  document.getElementById("hiddenApplication");
-            saveElement += document.getElementById("firstName").value+"<br>";
-            saveElement += document.getElementById("lastName").value+"<br>";
-            saveElement += document.getElementById("email").value;
-            saveElement += document.getElementById("phone").value;
-            saveElement += document.getElementById("additionalInfo").value;
+            saveElement.innerHTML += document.getElementById("firstName").value+"<br>";
+            saveElement.innerHTML += document.getElementById("lastName").value+"<br>";
+            saveElement.innerHTML += document.getElementById("email").value;
+            saveElement.innerHTML += document.getElementById("phone").value;
+            saveElement.innerHTML += document.getElementById("additionalInfo").value;
             html2pdf().set(opt).from(saveElement).save().then(() => {
                  // =========================================================
                  // === CLEANUP STEP: Restore form for user interaction ===
