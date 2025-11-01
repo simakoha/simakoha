@@ -217,10 +217,10 @@
                 { inputId: 'phone', outputId: 'pdf-phone' },
                 { inputId: 'additionalInfo', outputId: 'pdf-additionalInfo' }
             ];
-
+            const outputElement;
             fields.forEach(field => {
                 const inputElement = document.getElementById(field.inputId);
-                const outputElement = document.getElementById(field.outputId);
+                outputElement = document.getElementById(field.outputId);
 
                 // Hide the input box and show the plain text output div
                 inputElement.classList.add('hide-for-pdf');
